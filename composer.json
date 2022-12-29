@@ -1,0 +1,20 @@
+{
+    "name": "agtech/base",
+    "description": "Basic module for admin menu, settings etc.",
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+      ],
+    "require": {
+       	"php": "~7.3.0|~7.4.0",
+        "magento/magento2-base": "^2.4"
+    },
+	"autoload": {
+		"files": [ "registration.php" ],
+		"psr-4": {
+		  "Agtech\\Base\\": ""
+		}
+	}
+}

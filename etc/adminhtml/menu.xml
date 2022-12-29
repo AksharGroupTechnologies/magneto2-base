@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Agtech_Base::MenuItem" title="agtech" module="Agtech_Base" sortOrder="175" resource="Agtech_Base::MenuItem"/>
+    </menu>
+</config>

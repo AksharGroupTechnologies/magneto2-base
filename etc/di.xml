@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="agtech_base_setup" xsi:type="object">Agtech\Base\Console\Setup</item>
+            </argument>
+        </arguments>
+    </type>
+   
+    <type name="Agtech\Base\Console\Setup">
+        <arguments>
+            <argument name="steps" xsi:type="array">
+                <item name="agtech_setup_admin_security" sortOrder="10" xsi:type="object">Agtech\Base\Console\Setup\AdminSecurity</item>
+                <item name="agtech_setup_general" sortOrder="20" xsi:type="object">Agtech\Base\Console\Setup\General</item>
+                <item name="agtech_setup_email" sortOrder="30" xsi:type="object">Agtech\Base\Console\Setup\Email</item>
+                <item name="agtech_setup_tax" sortOrder="40" xsi:type="object">Agtech\Base\Console\Setup\Tax</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
