@@ -1,0 +1,24 @@
+.config-nav-block.agtech-config-tab strong:before {
+    background: url(../images/agtech_logo.svg) no-repeat;
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    content: '';
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+fieldset#agtech_info_information h3 {
+    color: #eb5202;
+    margin-bottom: 10px;
+}
+
+fieldset#agtech_info_installed_extensions td.label label {
+    padding-bottom: 7px;
+}
+
+.agtech-follow ul li {
+    float: left;
+    list-style: none;
+}

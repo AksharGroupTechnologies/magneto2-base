@@ -1,0 +1,29 @@
+country,country_code,zero_rate,superreduced_rate,reduced_rate,standard_rate
+Belgium,BE,0,6,6,21
+Bulgaria,BG,0,9,9,20
+Czech Republic,CZ,0,15,15,21
+Denmark,DK,0,25,25,25
+Germany,DE,0,7,7,19
+Estonia,EE,0,9,9,20
+Ireland,IE,0,4.8,13.5,23
+Greece,EL,0,13,13,24
+Spain,ES,0,4,10,21
+France,FR,0,2.1,10,20
+Croatia,HR,0,13,13,25
+Italy,IT,0,4,10,22
+Cyprus,CY,0,5,5,19
+Latvia,LV,0,12,12,21
+Lithuania,LT,0,5,5,21
+Luxembourg,LU,0,3,8,17
+Hungary,HU,0,5,5,27
+Malta,MT,0,5,5,18
+Netherlands,NL,0,9,9,21
+Austria,AT,0,10,10,20
+Poland,PL,0,5,5,23
+Portugal,PT,0,6,6,23
+Romania,RO,0,5,5,19
+Slovenia,SI,0,9.5,9.5,22
+Slovakia,SK,0,10,10,20
+Finland,FI,0,10,10,24
+Sweden,SE,0,12,12,25
+United Kingdom,UK,0,5,5,20
