@@ -30,28 +30,35 @@ class Extensions extends \Magento\Config\Block\System\Config\Form\Fieldset
      * @var \Magento\Framework\Module\ModuleResource
      */
     private $moduleResource;
-
+	/**
+     * @var \Magento\Framework\Module\FullModuleList
+     */
+	protected $fullModuleList;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Backend\Model\Auth\Session $authSession
      * @param \Magento\Framework\View\Helper\Js $jsHelper
      * @param \Magento\Framework\Module\ModuleListInterface $moduleList
+     * @param \Magento\Framework\Module\ModuleResource  $moduleResource
+     * @param DeploymentConfig $deployConf
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Context $context,
         \Magento\Backend\Model\Auth\Session $authSession,
         \Magento\Framework\View\Helper\Js $jsHelper,
-		DeploymentConfig $deployConf,
         \Magento\Framework\Module\ModuleListInterface $moduleList,
         \Magento\Framework\Module\ModuleResource $moduleResource,
+		DeploymentConfig $deployConf,
+		\Magento\Framework\Module\FullModuleList $fullModuleList,
         array $data = []
     )
     {
         parent::__construct($context, $authSession, $jsHelper, $data);
         $this->_moduleList = $moduleList;
         $this->moduleResource = $moduleResource;
-		$this->modmod = $deployConf;
+		$this->_deployconf = $deployConf;
+		$this->fullModuleList = $fullModuleList;
     }
 
     /**
@@ -62,29 +69,39 @@ class Extensions extends \Magento\Config\Block\System\Config\Form\Fieldset
 	 //Loadconfig data for disable module list
 	private function loadConfigData()
     {
-        if (null === $this->configData && null !== $this->modmod->get(ConfigOptionsListConstants::KEY_MODULES)) {
-            $this->configData = $this->modmod->get(ConfigOptionsListConstants::KEY_MODULES);
+        if (null === $this->configData && null !== $this->_deployconf->get(ConfigOptionsListConstants::KEY_MODULES)) {
+            $this->configData = $this->_deployconf->get(ConfigOptionsListConstants::KEY_MODULES);
         }
     }
-	  public function getNames()
+	
+	
+    public function modulesList()
     {
-        $this->loadConfigData();
-      
+        $allModules = $this->fullModuleList->getNames();
+		return $allModules;
+    }
+	
+	  public function getNamesCustom()
+    {
+        $this->loadConfigData();    
         $result = array_keys(array_filter($this->configData));
         return $result;
     }
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
+		// print_r($this->modulesList());
+		// exit;
         $html = $this->_getHeaderHtml($element);
 
-        $modules = $this->getNames(); //before $this->_moduleList->getNames(); Replaced with created function`
+        $modules = $this->getNamesCustom(); //before $this->_moduleList->getNames(); Replaced with created function`
 
         $dispatchResult = new \Magento\Framework\DataObject($modules);
 
         $modules = $dispatchResult->toArray();
 
         sort($modules);
-
+// print_r($modules);
+// exit;
         foreach ($modules as $moduleName) {
             if (strstr($moduleName, 'Agtech_') === false) {
                 continue;
@@ -116,7 +133,7 @@ class Extensions extends \Magento\Config\Block\System\Config\Form\Fieldset
         $moduleName = $status . ' ' . $moduleName;
 
         $field = $fieldset->addField($moduleCode, 'label', array(
-            'name' => 'dummy',
+            'name' => 'modulelistagtech',
             'label' => $moduleName,
             'value' => $currentVer,
         ))->setRenderer($this->_getFieldRenderer());
