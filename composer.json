@@ -1,5 +1,5 @@
 {
-    "name": "agtech/base",
+    "name": "agtech/magento2-base",
     "description": "Basic module for admin menu, settings etc.",
     "type": "magento2-module",
     "version": "0.0.1",
